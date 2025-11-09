@@ -1,4 +1,4 @@
-# 🧭 Smart Place Finder Chatbot
+# 🧭 Smart Place Finder
 
 [![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-4A90E2?logo=ollama)](https://ollama.com/)
@@ -12,16 +12,3 @@ Example:
 > “Find a cafe in Jakarta”
 
 The chatbot queries the FastAPI API and returns a list of places with clickable Google Maps links.
-
----
-
-## 🧩 Architecture Overview
-
-```mermaid
-flowchart TD
-    A[User - Open WebUI Chat] --> B[LLM (Ollama)]
-    B --> C[External Tool → FastAPI /api/places]
-    C --> D[FastAPI Queries Google Places API and Returns JSON]
-    D --> B
-    B --> E[LLM Formats Output in Markdown]
-    E --> A
