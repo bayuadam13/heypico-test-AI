@@ -94,7 +94,7 @@ Create `.env` files inside each component as needed.
 ### `backend/.env`
 
 ```
-GOOGLE_MAPS_API_KEY=AIzaSyChZk6dohcYkQKb1xsC5mcFmxTTCiyEOJg
+GOOGLE_MAPS_API_KEY={on email}
 ```
 
 
