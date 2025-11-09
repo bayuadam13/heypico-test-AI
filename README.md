@@ -55,8 +55,8 @@ Follow the installation guide here:
 Example:
 
 ```bash
-ollama pull llama3.1
-ollama run llama3.1
+ollama pull llama3
+ollama run llama3
 ```
 
 Ensure your LLM is running locally before starting the WebUI.
@@ -74,10 +74,14 @@ git clone https://github.com/open-webui/open-webui.git
 cd open-webui
 ```
 
-Then install dependencies and start the development server.
+#### ▶️ Run WebUI
+
+```bash
+python -m open_webui
+```
 
 By default, WebUI will start at
-👉 [http://localhost:3000](http://localhost:3000)
+👉 [http://localhost:8080](http://localhost:8080)
 
 You can configure the backend API URL and LLM endpoint in the `.env` file.
 
@@ -94,16 +98,18 @@ GOOGLE_MAPS_API_KEY=AIzaSyChZk6dohcYkQKb1xsC5mcFmxTTCiyEOJg
 ```
 
 
+---
+
 ## 🧠 Diagram Overview
 
 ```mermaid
 flowchart LR
     User["🧑 User (Web UI)"] -->|Prompt| WebUI["🌐 Open-WebUI"]
-    WebUI -->|Send Query| FastAPI["⚙️ FastAPI Backend"]
-    FastAPI -->|Forward Request| Ollama["🧩 LLM (Ollama)"]
+    WebUI -->|Send Prompt| Ollama["🧩 LLM (Ollama)"]
+    Ollama -->|Calls Tool / External API| FastAPI["⚙️ FastAPI (Tool)"]
     FastAPI -->|Fetch Location Data| Google["🗺️ Google Maps API"]
-    Ollama -->|AI Response| FastAPI
-    FastAPI -->|Structured JSON| WebUI
+    FastAPI -->|Return Data| Ollama
+    Ollama -->|Generate Final Response| WebUI
     WebUI -->|Display Result| User
 ```
 
